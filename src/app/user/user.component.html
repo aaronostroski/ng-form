@@ -1,0 +1,122 @@
+<section>
+
+<div class="box-form">
+
+  <form #form="ngForm" novalidate (submit)="form.valid && save(form.value)">
+    <div class="row">
+      <h2 class="ml-3 mb-2 pb-2 border-bottom">Cadastro de Usuário</h2>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-4 col-xs-12 mb-3">
+        <app-input label="Nome" for="input.name" class="text-muted" errorMessage="Campo obrigátorio e somente letras">
+          <input type="text" name="firstName" class="form-control" autocomplete="off" ngModel placeholder="Digite seu nome" required minlength="1"/>
+         </app-input>
+      </div>
+
+      <div class="col-sm-4 col-xs-12 mb-3">
+        <app-input label="Sobrenome" class="text-muted" errorMessage="Campo obrigátorio e somente letras">
+            <input type="text" name="secondName" class="form-control" autocomplete="off" ngModel placeholder="Digite seu sobrenome" required minlength="1"/>
+         </app-input>
+       </div>
+
+      <div class="col-sm-4 col-xs-12 mb-3">
+        <app-input label="Email" class="text-muted" errorMessage="Campo obrigátorio">
+            <input type="email" name="email" class="form-control" autocomplete="off" ngModel placeholder="Digite seu email" required minlength="1"/>
+         </app-input>
+       </div>
+
+      <div class="col-sm-6 col-xs-12 mb-3">
+        <app-input label="CNH" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+           <input type="text" name="cnh" mask="00000000000" class="form-control" autocomplete="off" ngModel placeholder="Digite o numero do seu CNH" required minlength="11"/>
+          </app-input>
+        </div>
+
+      <div class="col-sm-6 col-xs-12 mb-3">
+        <app-input label="CPF" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+            <input type="text" name="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00" class="form-control" autocomplete="off" ngModel placeholder="Digite o numero do seu CPF" required minlength="11"/>
+          </app-input>
+        </div>
+
+      <div class="col-sm-6 col-xs-12 mb-3">
+        <app-input label="Rua" class="text-muted" errorMessage="Campo obrigátorio e somente letras">
+          <input type="text"  name="adress" class="form-control" autocomplete="off" ngModel placeholder="Digite nome dasua rua" required/>
+          </app-input>
+        </div>
+          
+       <div class="col-sm-3 col-xs-12 mb-3">
+         <app-input label="Numero" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+            <input type="text" name="numberHome" mask="0*" class="form-control" autocomplete="off" ngModel placeholder="Digite numero da sua casa" required minlength="1"/>
+            </app-input>       
+          </div>
+
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="CEP" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+            <input type="text" name="cep" [dropSpecialCharacters]="false" mask="00000-000" class="form-control" autocomplete="off" ngModel placeholder="Digite seu cep" required minlength="8"/>
+            </app-input>
+          </div>
+
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="Complemento" class="text-muted" errorMessage="Campo obrigátorio">
+            <input type="text" name="complement" class="form-control" autocomplete="off" ngModel placeholder="Digite seu complemento" required/>
+            </app-input>
+          </div>
+
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="Nascimento" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+            <input type="text" name="birth" [dropSpecialCharacters]="false" mask="00/00/0000" class="form-control" autocomplete="off" ngModel placeholder="Data de nascimento" required/>
+            </app-input>
+          </div>
+
+          <div class="col-sm-6 col-xs-12 mb-3">
+            <app-input label="Telefone" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+              <input type="text" name="telephone" [dropSpecialCharacters]="false" mask='(00) 00000-0000' class="form-control" autocomplete="off" ngModel placeholder="Digite seu telefone" required minlength="8"/>
+              </app-input>
+            </div>      
+
+            <button type="submit" class="btn btn-lg ml-3" [disabled]="!form.valid">Cadastrar</button>
+            
+    </div>
+  </form>
+
+</div>
+
+</section>
+
+<section>
+
+  <div class="box-form">
+
+  <span *ngIf="!cadasterUsers" class="border-bottom text-muted">Ainda não existe nenhum usuário cadastrado!</span>
+  
+  <table class="table table-striped" *ngIf="cadasterUsers">
+    <thead>
+      <tr>
+        <th scope="col">Nome:</th>
+        <th scope="col">Email:</th>
+        <th scope="col">CNH:</th>
+        <th scope="col">CPF:</th>
+        <th scope="col">Endereço:</th>
+        <th scope="col">Data de nascimento:</th>
+        <th scope="col">Telefone:</th>
+        <th scope="col">Botões:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cadasterUser of cadasterUsers">
+        <td>{{ cadasterUser.firstName }} {{ cadasterUser.secondName }}</td>
+        <td>{{ cadasterUser.email }}</td>
+        <td>{{ cadasterUser.cnh }}</td>
+        <td>{{ cadasterUser.cpf }}</td>
+        <td>{{ cadasterUser.adress }}</td>
+        <td>{{ cadasterUser.birth }}</td>
+        <td>{{ cadasterUser.telephone }}</td>
+        <td><button type="button" (click)="delete()" class="btn btn-danger">Excluir</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</section>

@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #f2f2f2 !important;
+    font-family: sans-serif;
+}
+
+
+.box-form{
+    background-color: white;
+    margin: 20px;
+    padding: 35px;
+    border-radius: 7px;
+}
+
+.material-icons.error{
+    font-size: 0.9em;
+}
+
+.material-icons.done{
+    font-size: 0.9em;
+}
+.help-block.alert-danger{
+    background-color: white;
+    margin: 1px;
+}
+
+.help-block.alert-success{
+    background-color: white;
+    margin: 1px;
+}
+
+.btn.btn-lg{
+    background: transparent;
+    color: black;
+    border: solid 2px black;
+    border-radius: 8px;
+    width: 200px;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    transition: 0.8s;
+
+}
+
+.btn.btn-lg:hover{
+    color:#ffffff;
+    background: black;
+}
+
+.marcador{
+
+    background: red;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

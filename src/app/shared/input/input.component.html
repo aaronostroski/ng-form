@@ -1,0 +1,6 @@
+<div class="form-group">
+                <label class="control-label"><span class="content-name">{{label}}</span></label>
+                <ng-content></ng-content>
+                <div class="help-block alert-danger" *ngIf="!input.valid && (input.dirty || input.touched)"><i class="material-icons error">error</i> {{errorMessage}}</div>
+                <div class="help-block alert-success" *ngIf="input.valid && (input.dirty || input.touched)"><i class="material-icons done">done</i> Ok</div>
+                </div>

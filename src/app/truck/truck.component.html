@@ -1,0 +1,98 @@
+<section>
+
+  <div class="box-form">
+  
+    <form #form="ngForm" novalidate (submit)="form.valid && save(form.value)">
+      <div class="row">
+        <h2 class="ml-3 mb-2 pb-2 border-bottom">Cadastro de Caminhão</h2>
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-sm-4 col-xs-12 mb-3">
+          <app-input label="Placa de caminhão" for="input.name" class="text-muted" errorMessage="Campo obrigátorio">
+            <input type="text" name="board" [dropSpecialCharacters]="false" mask="AAA-AAAA" class="form-control" autocomplete="off" ngModel placeholder="Digite sua placa" required minlength="1"/>
+           </app-input>
+        </div>
+  
+        <div class="col-sm-5 col-xs-12 mb-3">
+          <app-input label="Numero de renavam" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+              <input type="text" name="renavam" mask="000000000" class="form-control" autocomplete="off" ngModel placeholder="Digite seu renavam" required minlength="1"/>
+           </app-input>
+         </div>
+  
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="Ano de fabricação" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+              <input type="text" name="dateF" [dropSpecialCharacters]="false" mask="00/00/0000" class="form-control" autocomplete="off" ngModel placeholder="Ano de fabricação" required minlength="1"/>
+           </app-input>
+         </div>
+  
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="Ano de compra do veiculo" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+             <input type="text" name="dateC" [dropSpecialCharacters]="false" mask="00/00/0000" class="form-control" autocomplete="off" ngModel placeholder="Ano de compra" required minlength="1"/>
+            </app-input>
+          </div>
+  
+        <div class="col-sm-3 col-xs-12 mb-3 input-group">
+          <app-input label="Carga máxima suportada" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+              <input type="text" name="maxCharge" sufix=" toneladas" mask="0*"  class="form-control" autocomplete="off" ngModel placeholder="Carga máxima suportada" required minlength="1"/>
+            </app-input>
+          </div>
+  
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <app-input label="Quantidade de eixos" class="text-muted" errorMessage="Campo obrigátorio e somente letras">
+            <input type="text" name="axes" mask="000" class="form-control" autocomplete="off" ngModel placeholder="Digite o numero de eixos" required/>
+            </app-input>
+          </div>
+            
+         <div class="col-sm-3 col-xs-12 mb-3">
+           <app-input label="Cumprimento total" class="text-muted" errorMessage="Campo obrigátorio e somente numeros">
+             <input type="text" name="width" sufix=" metros" mask="0*" class="form-control" autocomplete="off" ngModel placeholder="Digite O cumprimento" required minlength="1"/>
+             </app-input>       
+           </div>
+
+            <button type="submit" class="btn btn-lg ml-3" [disabled]="!form.valid">Cadastrar</button>
+                      
+  
+      </div>
+    </form>
+  
+  </div>
+  
+  </section>
+  
+  <section>
+  
+    <div class="box-form">
+  
+    <span *ngIf="!cadasterTruck" class="border-bottom text-muted">Ainda não existe nenhum caminhão cadastrado!</span>
+    
+    <table class="table table-striped" *ngIf="cadasterTrucks">
+      <thead>
+        <tr>
+          <th scope="col">Placa:</th>
+          <th scope="col">Renavam:</th>
+          <th scope="col">Ano de fabricação:</th>
+          <th scope="col">Ano de compra:</th>
+          <th scope="col">Carga máxima:</th>
+          <th scope="col">Quantidade de eixos:</th>
+          <th scope="col">Cumprimento total:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cadasterTruck of cadasterTrucks">
+          <td>{{ cadasterTruck.board }} </td>
+          <td>{{ cadasterTruck.renavam }}</td>
+          <td>{{ cadasterTruck.dateF }}</td>
+          <td>{{ cadasterTruck.dateC }}</td>
+          <td>{{ cadasterTruck.maxCharge }}</td>
+          <td>{{ cadasterTruck.axes }}</td>
+          <td>{{ cadasterTruck.width }}</td>
+          <td><button type="button" (click)="delete()" class="btn btn-danger">Excluir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    </div>
+  
+  </section>
